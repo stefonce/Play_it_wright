@@ -66,8 +66,8 @@ async function checkFirstAvailableDate() {
 
     // On scanne toutes les valeurs d'input et on repère celle qui a la
     // forme d'une date ("Ma, 5 oktober 2026") et celle d'une heure ("16:30").
-    const allValues = await page.$$eval('input', (inputs) =>
-      inputs.map((i) => i.value).filter(Boolean)
+    const allValues = await page.$$eval('input, select', (els) =>
+      els.map((el) => el.value).filter(Boolean)
     );
 
     const dateRegex = /\d{1,2}\s+\p{L}+\s+\d{4}/u;
